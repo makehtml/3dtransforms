@@ -115,7 +115,7 @@ Now we have a working 3D object. To flip the card, we can toggle the `is-flipped
 
 {% include edit-codepen.html pen_slug="LmWoWe" %}
 
-![3D card flip transition](../img/card-flip01.png)
+![3D card flip transition](./img/card-flip01.png)
 
 ## Slide-flip
 
@@ -155,7 +155,7 @@ That flip now needs some horizontal movement with `translateX`. We'll set the ro
 
 {% include edit-codepen.html pen_slug="LmWozd" %}
 
-![3D card slide-flip transition](../img/card-flip02.png)
+![3D card slide-flip transition](./img/card-flip02.png)
 
 * * *
 

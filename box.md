@@ -208,7 +208,7 @@ Just like the cube example, to expose a face, the `#box` needs to have a style t
 
 {% include edit-codepen.html pen_slug="MGpMOV" %}
 
-![3D CSS box object rotating](../img/box02.png)
+![3D CSS box object rotating](./img/box02.png)
 
 * * *
 

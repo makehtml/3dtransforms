@@ -89,11 +89,11 @@ Now the outward shift. Back when we were creating cube and boxes, the `translate
 
 Drawing out a diagram of the carousel, we see that we only know two things: the width of each panel is 210px and the each panel is rotated 40 degrees from the next. If we split one of these triangles down its center, we get a right triangle, prime for some trigonometry.
 
-![Geometric diagram of carousel](../img/diagram.png)
+![Geometric diagram of carousel](./img/diagram.png)
 
 We can determine the length of _r_ in this diagram with a basic tangent equation.
 
-![Trigonometric calculation](../img/calc.png)
+![Trigonometric calculation](./img/calc.png)
 
 There you have it, `288px` is the distance to translate the panels out in 3D space.
 
