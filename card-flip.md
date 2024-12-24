@@ -1,6 +1,6 @@
 ---
 
-title: Card Flip
+title: Переворот карточки
 layout: doc
 category: docs
 slug: card
@@ -13,29 +13,29 @@ redirect_from:
 
 ---
 
-We now have all the tools to start making 3D objects. Let's get started with the basics, flipping a card.
+Теперь у нас есть все инструменты, чтобы начать создавать 3D-объекты. Давайте начнем с основ — переворота карточки.
 
-Here's the basic markup we'll need:
+Вот базовая разметка, которую нам нужно использовать:
 
 {% highlight html %}
 <div class="scene">
   <div class="card">
-    <div class="card__face card__face--front">front</div>
-    <div class="card__face card__face--back">back</div>
+    <div class="card__face card__face--front">лицевая</div>
+    <div class="card__face card__face--back">задняя</div>
   </div>
 </div>
 {% endhighlight %}
 
 <div class="scene">
   <div class="card card--step0">
-    <div class="card__face card__face--front">front</div>
-    <div class="card__face card__face--back">back</div>
+    <div class="card__face card__face--front">лицевая</div>
+    <div class="card__face card__face--back">задняя</div>
   </div>
 </div>
 
-The `.scene` will house the 3D space. The `.card` acts as the 3D object. Two separate `.card__face` elements are used for the faces of the card. I recommend using this same pattern for any 3D transform: scene, object, and faces. Keeping the 3D space element and the object separate element establishes a paradigm that is simple to understand and easier to style.
+Элемент `.scene` будет служить контейнером для 3D-пространства. Элемент `.card` действует как 3D-объект. Два отдельных элемента `.card__face` используются для лиц карточки. Я рекомендую использовать эту же структуру для любых 3D-преобразований: сцена, объект и грани. Разделение элемента 3D-пространства и объекта помогает установить понятную модель, которую проще стилизовать.
 
-We're ready for some 3D stylin'. First, apply necessary `perspective` to the containing 3D space, along with any size or positioning styles.
+Теперь мы готовы к 3D-стилизации. Сначала применим необходимую перспективу для контейнера 3D-пространства, а также любые стили для размеров и позиционирования.
 
 {% highlight css %}
 .scene {
@@ -45,9 +45,9 @@ We're ready for some 3D stylin'. First, apply necessary `perspective` to the con
 }
 {% endhighlight %}
 
-Now the `.card` element can be transformed in its parent's 3D space. We'll add `width: 100%;`  and `height: 100%;` so the card's `transform-origin` will occur in the center of container. More on `transform-origin` later. `position: relative` is used to position card faces absolutely.
+Теперь элемент `.card` можно трансформировать в 3D-пространстве его родительского элемента. Мы добавим `width: 100%;` и `height: 100%;`, чтобы `transform-origin` карточки располагался в центре контейнера. Подробнее о `transform-origin` позже. Свойство `position: relative` используется для того, чтобы позиционировать грани карточки абсолютно.
 
-Let's add a CSS3 transition so users can see the transform take effect.
+Добавим переход CSS3, чтобы пользователи могли увидеть, как преобразование вступает в силу.
 
 {% highlight css %}
 .card {
@@ -59,9 +59,9 @@ Let's add a CSS3 transition so users can see the transform take effect.
 }
 {% endhighlight %}
 
-An element's `perspective` only applies to direct descendant children, in this case `.card`. In order for subsequent children to inherit a parent's perspective, and live in the same 3D space, the parent can pass along its perspective with `transform-style: preserve-3d`. Without 3D `transform-style`, the faces of the card would be flattened with its parents, and the back face's rotation would be nullified.
+Перспектива элемента применяется только к его непосредственным потомкам, в данном случае — к элементу `.card`. Чтобы последующие дочерние элементы унаследовали перспективу родителя и находились в одном 3D-пространстве, родитель может передать свою перспективу с помощью `transform-style: preserve-3d`. Без этого свойства 3D-преобразования, грани карточки будут сплющены вместе с родителем, и вращение задней грани будет отменено.
 
-To position the faces in 3D space, we'll need to reset their positions in 2D with `position: absolute`. In order to hide the back-side of the faces when they are faced away from the viewer, we use `backface-visibility: hidden`.
+Чтобы позиционировать грани в 3D-пространстве, нам нужно сбросить их позиции в 2D с помощью `position: absolute`. Для того, чтобы скрыть заднюю сторону граней, когда они обращены от зрителя, используем `backface-visibility: hidden`.
 
 {% highlight css %}
 .card__face {
@@ -72,7 +72,7 @@ To position the faces in 3D space, we'll need to reset their positions in 2D wit
 }
 {% endhighlight %}
 
-To flip `.card__face--back`, we add a basic 3D transform of `rotateY(180deg)`.
+Чтобы перевернуть `.card__face--back`, добавляем базовое 3D-преобразование `rotateY(180deg)`.
 
 {% highlight css %}
 .card__face--front {
@@ -85,7 +85,7 @@ To flip `.card__face--back`, we add a basic 3D transform of `rotateY(180deg)`.
 }
 {% endhighlight %}
 
-With the faces in place, the `.card` requires a corresponding style for when it is flipped.
+Когда грани установлены на свои места, для элемента `.card` требуется соответствующий стиль-модификатор, когда он перевернут.
 
 {% highlight css %}
 .card.is-flipped {
@@ -93,21 +93,21 @@ With the faces in place, the `.card` requires a corresponding style for when it 
 }
 {% endhighlight %}
 
-Now we have a working 3D object. To flip the card, we can toggle the `is-flipped` class. When `.is-flipped`, the `.card` will rotate 180 degrees, thus exposing `.card__face--back`.
+Теперь у нас есть рабочий 3D-объект. Чтобы перевернуть карточку, мы можем переключить класс `is-flipped`. Когда применяется класс `.is-flipped`, элемент `.card` вращается на 180 градусов, таким образом, открывая `.card__face--back`.
 
 <div class="demo demo--card-flip">
   <div class="scene scene--card">
     <div class="card">
-      <div class="card__face card__face--front">front</div>
-      <div class="card__face card__face--back">back</div>
+      <div class="card__face card__face--front">лицевая</div>
+      <div class="card__face card__face--back">задняя</div>
     </div>
   </div>
-  <p>Click card to flip.</p>
+  <p>Нажмите на карточку, чтобы перевернуть её.</p>
 </div>
 <script>
-( function() {
-  var card = document.querySelector('.demo--card-flip .card');
-  card.addEventListener( 'click', function() {
+(() => {
+  const card = document.querySelector('.demo--card-flip .card');
+  card.addEventListener( 'click', () => {
     card.classList.toggle('is-flipped');
   });
 })();
@@ -115,19 +115,19 @@ Now we have a working 3D object. To flip the card, we can toggle the `is-flipped
 
 {% include edit-codepen.html pen_slug="LmWoWe" %}
 
-![3D card flip transition](./img/card-flip01.png)
+![3D-переворот карточки](./img/card-flip01.png)
 
-## Slide-flip
+## Переворот карточки
 
-Take another look at the Weather App 3D transition. You'll notice that it's not quite the same effect as our previous demo. If you follow the right edge of the card, you'll find that it stays flush with the container. Instead of pivoting from the horizontal center, it pivots on that right edge. But the transition is not just a rotation -- the edge moves horizontally from right to left. We can reproduce this transition just by modifying a couple lines of CSS from our original card flip demo.
+Посмотрите ещё раз на 3D-переход Weather App. Вы заметите, что это не совсем тот же эффект, что в нашем предыдущем примере. Если проследить правый край карточки, вы увидите, что он остаётся на одном уровне с контейнером. Вместо того, чтобы вращаться от горизонтального центра, карточка вращается вокруг правого края. Но переход — это не просто вращение: край перемещается горизонтально справа налево. Мы можем воспроизвести этот переход, просто изменив несколько строк CSS из нашего первоначального примера переворота карточки.
 
-The pivot point for the rotation occurs at the right side of the card. By default, the `transform-origin` of an element is at its horizontal and vertical center (`50% 50%` or `center center`). An element's transforms are applied from its `transform-origin`. Let's change it to the right side:
+Точка вращения для вращения находится на правой стороне карточки. По умолчанию, `transform-origin` элемента расположен в его горизонтальном и вертикальном центре (`50% 50%` или `center center`). Преобразования элемента применяются относительно его `transform-origin`. Давайте изменим его на правую сторону:
 
 {% highlight css %}
 .card { transform-origin: center right; }
 {% endhighlight %}
 
-That flip now needs some horizontal movement with `translateX`. We'll set the rotation to `-180deg` so it flips right side out.
+Теперь для переворота нужно добавить горизонтальное движение с помощью `translateX`. Мы установим вращение на `-180deg`, чтобы карточка перевернулась лицевой стороной наружу.
 
 {% highlight css %}
 .card.is-flipped {
@@ -138,16 +138,16 @@ That flip now needs some horizontal movement with `translateX`. We'll set the ro
 <div class="demo demo--card-slide-flip">
   <div class="scene scene--card">
     <div class="card card--slide">
-      <div class="card__face card__face--front">front</div>
-      <div class="card__face card__face--back">back</div>
+      <div class="card__face card__face--front">лицевая</div>
+      <div class="card__face card__face--back">задняя</div>
     </div>
   </div>
-  <p>Click card to flip.</p>
+  <p>Нажмите на карточку, чтобы перевернуть её.</p>
 </div>
 <script>
-( function() {
-  var card = document.querySelector('.demo--card-slide-flip .card');
-  card.addEventListener( 'click', function() {
+(() => {
+  const card = document.querySelector('.demo--card-slide-flip .card');
+  card.addEventListener( 'click', () => {
     card.classList.toggle('is-flipped');
   });
 })();
@@ -155,8 +155,8 @@ That flip now needs some horizontal movement with `translateX`. We'll set the ro
 
 {% include edit-codepen.html pen_slug="LmWozd" %}
 
-![3D card slide-flip transition](./img/card-flip02.png)
+![3D-переворот карточки](./img/card-flip02.png)
 
 * * *
 
-[**Next: Cube &rarr;**](cube)
+[**Далее: Куб &rarr;**](cube)

@@ -1,6 +1,6 @@
 ---
 
-title: 3D transform functions
+title: Функции 3D-трансформаций
 layout: doc
 slug: functions
 redirect_from:
@@ -9,9 +9,9 @@ redirect_from:
 
 ---
 
-As a web designer, you're probably well acquainted with working in two dimensions, X and Y, positioning items horizontally and vertically. With a 3D space initialized with `perspective`, we can now transform elements in three spatial dimensions with the third Z dimension.
+Как веб-дизайнер, вы, вероятно, хорошо знакомы с работой в двух измерениях — X и Y, размещая элементы по горизонтали и вертикали. Теперь, когда 3D-пространство инициализировано с помощью `perspective`, мы можем трансформировать элементы в трёх пространственных измерениях, добавив третье измерение — Z.
 
-3D transforms use the same `transform` property used for 2D transforms. If you're familiar with 2D transforms, you'll find the basic [3D transform functions](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function) similar.
+3D-преобразования используют тот же свойство `transform`, что и для 2D-преобразований. Если вы знакомы с 2D-преобразованиями, основные [функции 3D-преобразований](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function) покажутся вам похожими.
 
 * `rotateX( angle )`
 * `rotateY( angle )`
@@ -19,9 +19,9 @@ As a web designer, you're probably well acquainted with working in two dimension
 * `translateZ( tz )`
 * `scaleZ( sz )`
 
-Whereas `translateX()` positions an element along the horizontal X axis, `translateZ()` positions it along the Z axis, which runs front to back in 3D space. Positive values position the element closer to the viewer, negative values further away.
+Тогда как `translateX()` перемещает элемент вдоль горизонтальной оси X, `translateZ()` перемещает его вдоль оси Z, которая проходит от нас к экрану в 3D-пространстве. Положительные значения сдвигают элемент ближе к зрителю, отрицательные — дальше.
 
-The `rotate` functions rotate the element around the corresponding axis. This is a bit counter-intuitive at first, as you might imagine that `rotateX()` will rotate an object horizontally left or right. Instead, using `rotateX()` rotates an element _around_ the horizontal X axis, so the top of the element angles back and away, and the bottom angles near.
+Функции `rotate` вращают элемент вокруг соответствующей оси. Это может быть немного контр-интуитивно на первый взгляд, так как можно подумать, что `rotateX()` будет вращать объект горизонтально, влево или вправо. Но на самом деле, используя `rotateX()`, элемент вращается _вокруг_ горизонтальной оси X, так что верхняя часть элемента наклоняется назад и уходит, а нижняя — наклоняется к нам.
 
 <div class="scene scene--transform-func">
   <div class="transform-func-panel" style="transform: translateZ(-200px)">translateZ(-200px)</div>
@@ -45,22 +45,22 @@ The `rotate` functions rotate the element around the corresponding axis. This is
 
 {% include edit-codepen.html pen_slug="NMpVxV" %}
 
-There's also several shorthand transform functions so you can set values for all three dimensions:
+Существует несколько сокращённых функций преобразования, с помощью которых можно задать значения для всех трёх измерений:
 
 * `translate3d( tx, ty, tz )`
 * `scale3d( sx, sy, sz )`
 * `rotate3d( rx, ry, rz, angle )`
 
-## Hardware acceleration
+## Аппаратное ускорение
 
-These 3-argument `transform3d()` functions also have the benefit of triggering hardware acceleration. Dean Jackson, CSS 3D transform spec author and main WebKit dude, wrote:
+Эти функции `transform3d()` с тремя аргументами также имеют преимущество в виде активации аппаратного ускорения. Дин Джексон, автор спецификации CSS 3D преобразований и главный чувак WebKit, написал:
 
-> In essence, any transform that has a 3D operation as one of its functions will trigger hardware compositing, even when the actual transform is 2D, or not doing anything at all (such as `translate3d(0,0,0)`). Note this is just current behaviour, and could change in the future (which is why we don't document or encourage it). But it is very helpful in some situations and can significantly improve redraw performance.
+> По сути, любое преобразование, в котором есть 3D-операция, активирует аппаратное композитирование, даже если само преобразование 2D или вообще ничего не делает (например, `translate3d(0,0,0)`). Обратите внимание, что это текущее поведение, и оно может измениться в будущем (именно поэтому мы не документируем и не рекомендуем его). Однако это очень полезно в некоторых ситуациях и может значительно улучшить производительность при перерисовке.
 
-[This note was written in 2010.](http://mir.aculo.us/2010/08/05/html5-buzzwords-in-action/) Since then, other browsers have adopted this behavior. But YMMV. Hardware acceleration in browsers remains a mysterious subject that's rarely documented.
+[Эта заметка была написана в 2010 году.](http://mir.aculo.us/2010/08/05/html5-buzzwords-in-action/) С тех пор другие браузеры приняли это поведение, но результаты могут различаться. Аппаратное ускорение в браузерах остаётся загадочной темой, о которой редко пишут в документации.
 
-For the sake of clarity, the demos in this essay will use the basic transform functions, but if you're looking to boost performance, try using `transform3d()`.
+Для ясности, в демонстрациях в этом материале будут использованы базовые функции преобразования, но если вы хотите повысить производительность, попробуйте использовать `transform3d()`.
 
 * * *
 
-[**Next: Card flip &rarr;**](card-flip)
+[**Далее: Переворот карточки &rarr;**](card-flip)

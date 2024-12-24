@@ -1,6 +1,6 @@
 ---
 
-title: Introduction
+title: Введение в 3d
 layout: doc
 is_homepage: true
 slug: intro
@@ -9,34 +9,34 @@ redirect_from:
 
 ---
 
-With the introduction of CSS transforms, elements could be shifted, rotated, slanted, squashed and stretched. Web designers were finally able to catch up to print designers. With CSS 3D transforms, web designers can move past their print counterparts and explore a new realm in graphic design.
+С появлением CSS-преобразований элементы на веб-странице стали гораздо более гибкими: их можно было перемещать, вращать, наклонять, сжимать и растягивать. Это дало веб-дизайнерам возможность наконец-то приблизиться к уровню печатных дизайнеров. А с введением CSS 3D-преобразований они смогли не только догнать, но и обогнать своих печатных коллег, открывая новые горизонты в графическом дизайне.
 
-Rendering 3D graphics on the web has been around for years. First there was Flash. Then with  `<canvas>` and WebGL came [Three.js](https://threejs.org/). WebVR and augmented reality lie around the corner. While these solutions are superb at producing explorable 3D environments, they can be overkill for the main stuff of the web: interfaces. With CSS 3D transforms, front-end developers can enhance their designs by adding a new dimension to traditional websites.
+3D-графика на вебе существует уже несколько лет. Сначала был Flash, затем появились <canvas>, WebGL и библиотеки, такие как [Three.js](https://threejs.org/). Сейчас на горизонте маячит WebVR и дополненная реальность. Все эти технологии великолепно справляются с созданием полноценных 3D-микромиров, которые можно исследовать, но для типичных задач на вебе они порой избыточны. В то время как CSS 3D-преобразования позволяют фронтенд-разработчикам легко добавить третье измерения в традиционные веб-интерфейсы, не утопая в сложности.
 
-## Rationale
+### Обоснование
 
-Before we dive into the third dimension, we owe it to our users to ask how they benefit from this feature.
+Прежде чем погрузиться в третье измерение, нам стоит задать себе вопрос: как пользователи выиграют от этой функции?
 
-Let's be real. CSS was built to style documents. It has since grown to handle applications. But alas, CSS is not ideal for 3D modeling. Instead, 3D transforms should be treated just like its fellow modern features like media queries, gradients, and transitions — as an **add-on.** 3D for websites works best when it adds to your interface, not replaces it. There is plenty of opportunity to use 3D transforms _in between_ the interface, via transitions.
+Будем честными. CSS был создан для стилизации документов. Со временем он стал использоваться для стилизации приложений. Но, увы, CSS не идеален для 3D-моделирования. Вместо этого 3D-преобразования следует рассматривать так же, как и другие современные возможности CSS — такие как медиазапросы, градиенты и анимации — как **дополнения.** 3D для сайтов работает лучше всего, когда оно дополняет интерфейс, а не заменяет его. Есть множество способов использовать 3D-преобразования _внутри_ интерфейса, через анимации и переходы.
 
-Take for instance the Weather App for early iOS. The application used two views: a details view and an options view. Switching between these two views was done with a 3D flip transition. This afforded the user that the interface had two and only two views, one on each side of the panel.
+Возьмём, к примеру, приложение «Погода» для ранних версий iOS. Оно использовало два вида: вид с подробностями и вид с настройками. Переключение между этими видами происходило с использованием 3D-переворота. Это давало пользователю понять, что интерфейс имеет два и только два представления, каждое из которых находится на одной из сторон панели.
 
-![iPhone Weather App 3D flip transition](./img/weather-app-transition.jpg)
+![3D-переворот в приложении погоды для iPhone](./img/weather-app-transition.jpg)
 
-Also consider carousel cycle plugins. How can you communicate how the slides wrap around to repeat? With 3D, slides are placed side by side one another in a circle in 3D space. In that arrangement, the cyclic pattern of the carousel is self-evident.
+Ещё один пример — плагины каруселей. Как показать, что слайды обвивают друг друга и циклично повторяются? С помощью 3D слайды можно расположить рядом друг с другом в круге в 3D-пространстве. В таком расположении цикличность карусели становится очевидной.
 
-3D transforms can be more than just eye candy. We can use them to solve actual interface challenges and make our applications more intuitive.
+3D-преобразования могут быть не только «конфетками для глаз». Мы можем использовать их для решения реальных задач интерфейса, делая наши приложения более интуитивно понятными.
 
-## Current Support Environment
+### Текущая поддержка
 
-[The CSS 3D transforms module](https://www.w3.org/TR/css-transforms-1/) was first [introduced in 2009](https://www.w3.org/TR/2009/WD-css3-3d-transforms-20090320/). It was authored by members at Apple and was first supported by Safari. Since then, all modern browsers including Chrome, Firefox, Internet Explorer and Edge have added support. View the chart on [caniuse.com/#feat=transforms3d](https://caniuse.com/#feat=transforms3d) to check the latest support environment across the browser landscape.
+[Модуль CSS 3D-преобразований](https://www.w3.org/TR/css-transforms-1/) был впервые [представлен в 2009 году](https://www.w3.org/TR/2009/WD-css3-3d-transforms-20090320/). Его разработали участники из Apple, и первым, кто его поддержал, стал Safari. С тех пор все современные браузеры, включая Chrome, Firefox, Internet Explorer и Edge, добавили поддержку. Для того чтобы проверить актуальную информацию о поддержке, загляните в таблицу на [caniuse.com/#feat=transforms3d](https://caniuse.com/#feat=transforms3d).
 
-As of 2018, un-prefixed `transform` CSS properties are supported by 98% of browsers in use. Adding `-webkit-transform` will capture older browsers to get to 99%.
+На 2024 год, безпрефиксные свойства `transform` поддерживаются 98% браузеров.
 
-There is one caveat. [Internet Explorer 11 does not support `transform-style: preserve-3d`](http://msdn.microsoft.com/en-us/library/ie/hh673529%28v=vs.85%29.aspx#the_ms_transform_style_property) (we'll cover this property later). This means IE11 can still use 3D transforms with individual elements, but cannot handle nested elements to build the objects covered in this essay.
+Есть одно небольшое исключение. [Internet Explorer 11 не поддерживает `transform-style: preserve-3d`](http://msdn.microsoft.com/en-us/library/ie/hh673529%28v=vs.85%29.aspx#the_ms_transform_style_property) (об этом свойстве мы поговорим позже). Это значит, что IE11 может использовать 3D-преобразования для отдельных элементов, но не может обрабатывать вложенные элементы для создания сложных объектов, которые рассматриваются в этом эссе.
 
-Let's get coding.
+Ну что, давайте кодить.
 
 * * *
 
-[**Next: Perspective &rarr;**](perspective)
+[**Далее: Перспектива &rarr;**](perspective)

@@ -1,6 +1,6 @@
 ---
 
-title: Perspective
+title: Перспектива
 layout: doc
 slug: perspective
 script: perspective.js
@@ -13,20 +13,22 @@ redirect_from:
 ---
 
 
-To activate 3D space, an element needs perspective.  This can be applied in two ways.
+### Перспектива
 
-The first technique is with the [`transform` property](https://developer.mozilla.org/en-US/docs/Web/CSS/transform), with `perspective()` as a function:
+Чтобы активировать 3D-пространство, элементу необходима перспектива. Это можно сделать двумя способами.
+
+Первая техника — использование [свойства `transform`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform) с функцией `perspective()`:
 
 
 {% highlight css %}
 transform: perspective(400px);
 {% endhighlight %}
 
-For example:
+Например:
 
 {% highlight css %}
 .panel--red {
-  /* perspective function in transform property */
+  /* функция perspective в свойстве transform */
   transform: perspective(400px) rotateY(45deg);
 }
 {% endhighlight %}
@@ -37,17 +39,17 @@ For example:
 
 {% include edit-codepen.html pen_slug="XqMGRB" %}
 
-The second technique is with the [`perspective` property](https://developer.mozilla.org/en-US/docs/Web/CSS/perspective):
+Вторая техника — использование [свойства `perspective`](https://developer.mozilla.org/en-US/docs/Web/CSS/perspective):
 
 {% highlight css %}
 perspective: 400px;
 {% endhighlight %}
 
-For example:
+Например:
 
 {% highlight css %}
 .scene--blue {
-  /* perspective property */
+  /* свойство perspective */
   perspective: 400px;
 }
 
@@ -62,9 +64,9 @@ For example:
 
 {% include edit-codepen.html pen_slug="PepLOz" %}
 
-These two formats both trigger a 3D space and can produce the same visual result. But there is a difference. The functional notation is convenient for directly applying a 3D transform on a single element (in the red example, I use it in conjunction with a `rotateY` transform). In this way, it is used as a shorthand to transform a single element in 3D.
+Обе эти техники активируют 3D-пространство и могут дать одинаковый визуальный результат. Однако есть одно отличие. Функциональная нотация удобна для прямого применения 3D-преобразований к отдельному элементу (в красном примере я использую её в сочетании с трансформацией rotateY). Таким образом, это можно использовать как сокращение для 3D-преобразования одного элемента.
 
-But when used on multiple elements, the effect breaks. The transformed elements don't line up together. This is because each element has its own perspective, its own vanishing point. To remedy this, use the `perspective` property on a parent element, so each child may share the same 3D space.
+Но когда применяется к нескольким элементам, эффект не срабатывает. Преобразованные элементы не выстраиваются друг с другом. Это происходит потому, что у каждого элемента своя перспектива и точка схода. Чтобы этого избежать, применяйте свойство perspective к родительскому элементу, чтобы дочерние элементы могли разделять одно и то же 3D-пространство.
 
 {% highlight css %}
 .panel--separate {
@@ -110,11 +112,11 @@ But when used on multiple elements, the effect breaks. The transformed elements 
 
 {% include edit-codepen.html pen_slug="MGpxVG" %}
 
-The value of `perspective` determines the intensity of the 3D effect. Think of it as a distance from the viewer to the object. The greater the value, the further the distance, the less intense the visual effect. `perspective: 2000px` yields a subtle 3D effect, as if we are viewing an object from far away through binoculars. `perspective: 100px` produces a tremendous 3D effect, like a tiny insect viewing a massive object.
+Значение свойства `perspective` определяет интенсивность 3D-эффекта. Представьте это как расстояние между зрителем и объектом. Чем больше значение, тем дальше объект, и тем менее заметным будет эффект. Например, `perspective: 2000px` даёт лёгкий 3D-эффект, как если бы мы смотрели на объект через бинокль издалека. А вот `perspective: 100px` создаёт потрясающий эффект, как если бы крошечное насекомое рассматривало гигантский объект.
 
-You can also use 3D transforms without perspective, either by setting `perspective: none` or not setting `perspective` at all. Without perspective, parallel planes are orthogonal and have no vanishing point.
+Также можно использовать 3D-преобразования без перспективы, установив `perspective: none` или не задавая свойство `perspective` вообще. Без перспективы параллельные плоскости становятся ортогональными и не имеют точки схода.
 
-By default, the vanishing point for a 3D space is positioned at the center. You can change the position of the vanishing point with [`perspective-origin` property](https://developer.mozilla.org/en-US/docs/Web/CSS/perspective-origin).
+По умолчанию точка схода для 3D-пространства расположена в центре. Вы можете изменить положение этой точки с помощью свойства [`perspective-origin`](https://developer.mozilla.org/en-US/docs/Web/CSS/perspective-origin).
 
 {% highlight css %}
 
@@ -125,41 +127,41 @@ perspective-origin: 25% 75%;
 <div class="demo demo--persp-cube">
   <div class="scene scene--cube scene--persp-cube">
     <div class="cube is-spinning">
-      <div class="cube__face cube__face--front">front</div>
-      <div class="cube__face cube__face--back">back</div>
-      <div class="cube__face cube__face--right">right</div>
-      <div class="cube__face cube__face--left">left</div>
-      <div class="cube__face cube__face--top">top</div>
-      <div class="cube__face cube__face--bottom">bottom</div>
+      <div class="cube__face cube__face--front">лицевая</div>
+      <div class="cube__face cube__face--back">задняя</div>
+      <div class="cube__face cube__face--right">правая</div>
+      <div class="cube__face cube__face--left">левая</div>
+      <div class="cube__face cube__face--top">верхняя</div>
+      <div class="cube__face cube__face--bottom">нижняя</div>
     </div>
   </div>
   <p>
     <label>
-      perspective
+      перспектива
       <input class="perspective-range" type="range" min="1" max="1000" value="400" data-units="px" />
     </label>
   </p>
   <p>
     <label>
-      perspective-origin x
+      точка схода по оси X
       <input class="origin-x-range" type="range" min="0" max="100" value="50" data-units="%" />
     </label>
   </p>
   <p>
     <label>
-      perspective-origin y
+      точка схода по оси Y
       <input class="origin-y-range" type="range" min="0" max="100" value="50" data-units="%" />
     </label>
   </p>
   <p>
     <label>
-      Spin cube
+      Крутить куб
       <input class="spin-cube-checkbox" type="checkbox" />
     </label>
   </p>
   <p>
     <label>
-      Backface visible
+      Видимая задняя грань
       <input class="backface-checkbox" type="checkbox" checked />
     </label>
   </p>
@@ -169,4 +171,4 @@ perspective-origin: 25% 75%;
 
 * * *
 
-[**Next: 3D transform functions &rarr;**](3d-transform-functions)
+[**Далее: Функции 3D-трансформаций &rarr;**](3d-transform-functions)
