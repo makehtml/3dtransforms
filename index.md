@@ -21,7 +21,7 @@ Let's be real. CSS was built to style documents. It has since grown to handle ap
 
 Take for instance the Weather App for early iOS. The application used two views: a details view and an options view. Switching between these two views was done with a 3D flip transition. This afforded the user that the interface had two and only two views, one on each side of the panel.
 
-![iPhone Weather App 3D flip transition](../img/weather-app-transition.jpg)
+![iPhone Weather App 3D flip transition](./img/weather-app-transition.jpg)
 
 Also consider carousel cycle plugins. How can you communicate how the slides wrap around to repeat? With 3D, slides are placed side by side one another in a circle in 3D space. In that arrangement, the cyclic pattern of the carousel is self-evident.
 
