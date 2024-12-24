@@ -1,104 +1,104 @@
 // rotate carousel
-( function() {
-  var demo = document.querySelector('.demo--rotate-carousel');
-  var carousel = demo.querySelector('.carousel');
-  var cellCount = 9;
-  var selectedIndex = 0;
+(() => {
+  const demo = document.querySelector('.demo--rotate-carousel');
+  const carousel = demo.querySelector('.carousel');
+  const cellCount = 9;
+  let selectedIndex = 0;
 
-  function rotateCarousel() {
-    var angle = selectedIndex / cellCount * -360;
-    carousel.style.transform = 'translateZ(-288px) rotateY(' + angle + 'deg)';
-  }
+  // Функция вращения карусели
+  const rotateCarousel = () => {
+    const angle = (selectedIndex / cellCount) * -360;
+    carousel.style.transform = `translateZ(-288px) rotateY(${angle}deg)`;
+  };
 
-  var prevButton = demo.querySelector('.previous-button');
-  prevButton.addEventListener( 'click', function() {
+  const prevButton = demo.querySelector('.previous-button');
+  const nextButton = demo.querySelector('.next-button');
+
+  // Обработчики кликов по кнопкам
+  prevButton.addEventListener('click', () => {
     selectedIndex--;
     rotateCarousel();
   });
 
-  var nextButton = demo.querySelector('.next-button');
-  nextButton.addEventListener( 'click', function() {
+  nextButton.addEventListener('click', () => {
     selectedIndex++;
     rotateCarousel();
   });
 })();
 
 // dynamic carousel
-( function() {
-  var demo = document.querySelector('.demo--dynamic-carousel');
-  var carousel = demo.querySelector('.carousel');
-  var cells = carousel.querySelectorAll('.carousel__cell');
-  var cellCount = 9;
-  var selectedIndex = 0;
-  var cellWidth = carousel.offsetWidth;
-  var cellHeight = carousel.offsetHeight;
-  var isHorizontal = true;
-  var rotateFn = isHorizontal ? 'rotateY' : 'rotateX';
-  var radius, theta;
-  // console.log( cellWidth, cellHeight );
+(() => {
+  const demo = document.querySelector('.demo--dynamic-carousel');
+  const carousel = demo.querySelector('.carousel');
+  const cells = Array.from(carousel.querySelectorAll('.carousel__cell'));
+  let cellCount = 9;
+  let selectedIndex = 0;
+  const cellWidth = carousel.offsetWidth;
+  const cellHeight = carousel.offsetHeight;
+  let isHorizontal = true;
+  let rotateFn = isHorizontal ? 'rotateY' : 'rotateX';
+  let radius, theta;
 
-  function rotateCarousel() {
-    var angle = theta * selectedIndex * -1;
-    carousel.style.transform = 'translateZ(' + -radius + 'px) ' + 
-      rotateFn + '(' + angle + 'deg)';
-  }
+  // Функция вращения динамической карусели
+  const rotateCarousel = () => {
+    const angle = theta * selectedIndex * -1;
+    carousel.style.transform = `translateZ(${-radius}px) ${rotateFn}(${angle}deg)`;
+  };
 
-  var prevButton = demo.querySelector('.previous-button');
-  prevButton.addEventListener( 'click', function() {
+  // Обновление карусели на основе диапазона клеток
+  const changeCarousel = () => {
+    theta = 360 / cellCount;
+    const cellSize = isHorizontal ? cellWidth : cellHeight;
+    radius = Math.round((cellSize / 2) / Math.tan(Math.PI / cellCount));
+
+    cells.forEach((cell, index) => {
+      if (index < cellCount) {
+        // Видимая клетка
+        cell.style.opacity = 1;
+        const cellAngle = theta * index;
+        cell.style.transform = `${rotateFn}(${cellAngle}deg) translateZ(${radius}px)`;
+      } else {
+        // Скрытая клетка
+        cell.style.opacity = 0;
+        cell.style.transform = 'none';
+      }
+    });
+
+    rotateCarousel();
+  };
+
+  const prevButton = demo.querySelector('.previous-button');
+  const nextButton = demo.querySelector('.next-button');
+  const cellsRange = demo.querySelector('.cells-range');
+  
+  prevButton.addEventListener('click', () => {
     selectedIndex--;
     rotateCarousel();
   });
 
-  var nextButton = demo.querySelector('.next-button');
-  nextButton.addEventListener( 'click', function() {
+  nextButton.addEventListener('click', () => {
     selectedIndex++;
     rotateCarousel();
   });
 
-  var cellsRange = demo.querySelector('.cells-range');
-  cellsRange.addEventListener( 'change', changeCarousel );
-  cellsRange.addEventListener( 'input', changeCarousel );
+  // Слушатели для изменения количества клеток
+  cellsRange.addEventListener('input', changeCarousel);
+  cellsRange.addEventListener('change', changeCarousel);
 
+  // Обработка изменения ориентации
+  const orientationRadios = demo.querySelectorAll('input[name="orientation"]');
 
+  orientationRadios.forEach(radio => {
+    radio.addEventListener('change', onOrientationChange);
+  });
 
-  function changeCarousel() {
-    cellCount = cellsRange.value;
-    theta = 360 / cellCount;
-    var cellSize = isHorizontal ? cellWidth : cellHeight;
-    radius = Math.round( ( cellSize / 2) / Math.tan( Math.PI / cellCount ) );
-    for ( var i=0; i < cells.length; i++ ) {
-      var cell = cells[i];
-      if ( i < cellCount ) {
-        // visible cell
-        cell.style.opacity = 1;
-        var cellAngle = theta * i;
-        cell.style.transform = rotateFn + '(' + cellAngle + 'deg) translateZ(' + radius + 'px)';
-      } else {
-        // hidden cell
-        cell.style.opacity = 0;
-        cell.style.transform = 'none';
-      }
-    }
-
-    rotateCarousel();
-  }
-
-  var orientationRadios = demo.querySelectorAll('input[name="orientation"]');
-  ( function() {
-    for ( var i=0; i < orientationRadios.length; i++ ) {
-      var radio = orientationRadios[i];
-      radio.addEventListener( 'change', onOrientationChange );
-    }
-  })();
-
-  function onOrientationChange() {
-    var checkedRadio = demo.querySelector('input[name="orientation"]:checked');
-    isHorizontal = checkedRadio.value == 'horizontal';
+  const onOrientationChange = () => {
+    const checkedRadio = demo.querySelector('input[name="orientation"]:checked');
+    isHorizontal = checkedRadio.value === 'horizontal';
     rotateFn = isHorizontal ? 'rotateY' : 'rotateX';
     changeCarousel();
-  }
+  };
 
-  // set initials
+  // Устанавливаем начальное состояние
   onOrientationChange();
-
 })();
