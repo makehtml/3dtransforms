@@ -119,9 +119,7 @@ perspective: 400px;
 По умолчанию точка схода для 3D-пространства расположена в центре. Вы можете изменить положение этой точки с помощью свойства [`perspective-origin`](https://developer.mozilla.org/en-US/docs/Web/CSS/perspective-origin).
 
 {% highlight css %}
-
 perspective-origin: 25% 75%;
-
 {% endhighlight %}
 
 <div class="demo demo--persp-cube">
@@ -138,31 +136,31 @@ perspective-origin: 25% 75%;
   <p>
     <label>
       перспектива
-      <input class="perspective-range" type="range" min="1" max="1000" value="400" data-units="px" />
+      <input class="perspective-range" type="range" min="1" max="1000" value="400" data-units="px">
     </label>
   </p>
   <p>
     <label>
       точка схода по оси X
-      <input class="origin-x-range" type="range" min="0" max="100" value="50" data-units="%" />
+      <input class="origin-x-range" type="range" min="0" max="100" value="50" data-units="%">
     </label>
   </p>
   <p>
     <label>
       точка схода по оси Y
-      <input class="origin-y-range" type="range" min="0" max="100" value="50" data-units="%" />
+      <input class="origin-y-range" type="range" min="0" max="100" value="50" data-units="%">
     </label>
   </p>
   <p>
     <label>
       Крутить куб
-      <input class="spin-cube-checkbox" type="checkbox" />
+      <input class="spin-cube-checkbox" type="checkbox">
     </label>
   </p>
   <p>
     <label>
       Видимая задняя грань
-      <input class="backface-checkbox" type="checkbox" checked />
+      <input class="backface-checkbox" type="checkbox" checked>
     </label>
   </p>
 </div>

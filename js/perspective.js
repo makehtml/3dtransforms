@@ -1,5 +1,4 @@
 // perspective cube
-
 (() => {
   const demo = document.querySelector('.demo--persp-cube');
   const scene = demo.querySelector('.scene');
@@ -65,5 +64,4 @@
   backfaceCheckbox.addEventListener('change', () => {
     cube.classList.toggle('is-backface-hidden', !backfaceCheckbox.checked);
   });
-
 })();

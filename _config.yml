@@ -1,7 +1,7 @@
 permalink: /:slug
 
 # site-wide data
-site_name: Intro to CSS 3D transforms
+site_name: Введение в 3D трансформации в CSS
 
 plugins:
   - jekyll-redirect-from

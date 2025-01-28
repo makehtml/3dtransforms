@@ -100,30 +100,15 @@ blockquote {
 }
 
 /* seleted nav item */
-.page--intro .nav-item-intro a,
-.page--perspective .nav-item-perspective a,
-.page--functions .nav-item-functions a,
-.page--card .nav-item-card a,
-.page--cube .nav-item-cube a,
-.page--box .nav-item-box a,
-.page--carousel .nav-item-carousel a,
-.page--conclusion .nav-item-conclusion a {
+.site-nav__item a {
   font-weight: bold;
   color: #333;
 }
-.page--intro .nav-item-intro a:hover,
-.page--perspective .nav-item-perspective a:hover,
-.page--functions .nav-item-functions a:hover,
-.page--card .nav-item-card a:hover,
-.page--cube .nav-item-cube a:hover,
-.page--box .nav-item-box a:hover,
-.page--carousel .nav-item-carousel a:hover,
-.page--conclusion .nav-item-conclusion a:hover {
+.site-nav__item a:hover {
   color: white;
 }
 
 @media screen and (min-width: 768px) {
-
   .content {
     padding-left: 220px;
   }
@@ -160,7 +145,6 @@ blockquote {
   footer {
     margin-left: 220px;
   }
-
 }
 
 

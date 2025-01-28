@@ -34,5 +34,4 @@
   // Initialize RangeDisplays
   const ranges = document.querySelectorAll('input[type="range"]');
   ranges.forEach(range => new RangeDisplay(range));
-
 })();
